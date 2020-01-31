@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+    <!-- 本项目作为树莓派的上位机服务软件，用户通过网页将音乐上传到这里，再点击播放
+    播放的时候树莓派通过socket技术将音乐文件传给树莓派，并命令其开始播放或暂停，还能设置循环列表播放模式
+    在列表播放完毕之后，树莓派将删除其中的音乐文件-->
+    <!--上位机服务软件要能管理用户登录权，管理音乐文件，要能向树莓派发送各种消息-->
+    <welcome-file-list>
+        <welcome-file>startup.jsp</welcome-file>
+    </welcome-file-list>
+
+    <!--    应用上下文
+    session中存有
+        filepath 用户当前路径
+        playing 用户当前播放文件（改进原来的图片预览模式）
+
+
+    application中有
+        root C:\root 在网站启动时被配置
+
+        connectionTime 树莓派连接时间
+        connectionStatus 树莓派连接状态
+        有修饰的树莓派响应类型
+            file 树莓派上的音乐文件
+            playFile 树莓派正在播放的文件
+
+    -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/applicationContext.xml</param-value>
+    </context-param>
+    <filter>
+        <filter-name>struts2</filter-name>
+        <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>struts2</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+</web-app>

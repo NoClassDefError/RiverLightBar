@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+<!--网页事件设计
+    每次打开播放页面要获取树莓派正在播放的信息，即检测灯条状态。
+    树莓派要能够随时上报播放信息，例如播放进度
+
+-->
+<struts>
+    <package name="default" extends="struts-default" namespace="/">
+        <action name="login" class="action.LoginAction">
+
+        </action>
+        <action name="upload" class="action.UploadAction" method="execute">
+            <result name="success" type="chain">
+                <param name="actionName">list</param>
+                <param name="method">execute</param>
+            </result>
+        </action>
+        <action name="newfile" class="action.NewFileAction" method="execute">
+            <result name="success" type="chain">
+                <param name="actionName">list</param>
+                <param name="method">execute</param>
+            </result>
+        </action>
+        <action name="enter" class="action.PlayAction" method="enter">
+            <result name="success" >
+                <!--发出开始播放的信息后，要再次判断树莓派状态-->
+                /play.jsp
+            </result>
+            <result name="error">
+                <!--未连接成功则进入console.jsp-->
+                /console.jsp
+            </result>
+        </action>
+        <!--向树莓派播放的方法，网页前端可以操作本机是否发出声音-->
+        <action name="play" class="action.PlayAction" method="play">
+            <result name="success">
+                /play.jsp
+            </result>
+
+        </action>
+        <action name="nextmusic" class="action.PlayAction" method="next">
+            <result name="success">
+                /play.jsp
+            </result>
+        </action>
+
+        <action name="lastmusic" class="action.PlayAction" method="last">
+            <result name="success">
+                /play.jsp
+            </result>
+        </action>
+
+        <action name="pause" class="action.PlayAction" method="pause">
+            <result name="paused" type="chain">
+                <param name="actionName">login</param>
+                <param name="method">execute</param>
+            </result>
+        </action>
+        <action name="rename" class="action.RenameAction" method="execute">
+            <result name="success" type="chain">
+                <param name="actionName">list</param>
+                <param name="method">execute</param>
+            </result>
+        </action>
+        <action name="delete" class="action.DeleteAction" method="execute">
+            <result name="success" type="chain">
+                <param name="actionName">list</param>
+                <param name="method">execute</param>
+            </result>
+        </action>
+        <action name="list" class="action.ListAction" method="execute">
+            <result name="success">/index.jsp</result>
+        </action>
+        <action name="download" class="action.DownloadAction">
+
+        </action>
+        <action name="move" class="action.MoveAction" method="execute">
+            <result name="success" type="chain">
+                <param name="actionName">list</param>
+                <param name="method">execute</param>
+            </result>
+        </action>
+        <action name="open" class="action.ListAction" method="readRequest">
+            <result name="success" type="chain">
+                <param name="actionName">list</param>
+                <param name="method">execute</param>
+            </result>
+        </action>
+
+    </package>
+</struts>

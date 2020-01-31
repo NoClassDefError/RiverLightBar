@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+<!--网页事件设计
+    每次打开播放页面要获取树莓派正在播放的信息，即检测灯条状态。
+    树莓派要能够随时上报播放信息，例如播放进度
+
+-->
+<struts>
+    <constant name= "struts.multipart.maxSize" value="100000000" />
+    <package name="default" extends="struts-default" namespace="/">
+        <action name="upload" class="action.UploadAction" method="execute">
+            <result name="success" type="chain">
+                <param name="actionName">list</param>
+                <param name="method">execute</param>
+            </result>
+            <interceptor-ref name="fileUpload">
+                <param name="maximumSize">100000000</param>
+            </interceptor-ref>
+            <interceptor-ref name="defaultStack"/> <!-- 默认拦截器 -->
+        </action>
+        <action name="newfile" class="action.NewFileAction" method="execute">
+            <result name="success" type="chain">
+                <param name="actionName">list</param>
+                <param name="method">execute</param>
+            </result>
+        </action>
+        <action name="enter" class="action.PlayAction" method="enter">
+            <result name="success" >
+                <!--发出开始播放的信息后，要再次判断树莓派状态-->
+                /play.jsp
+            </result>
+            <result name="error">
+                <!--未连接成功则进入console.jsp-->
+                /console.jsp
+            </result>
+        </action>
+        <!--向树莓派播放的方法，网页前端可以操作本机是否发出声音-->
+        <action name="pla" class="action.PlayAction" method="play">
+        </action>
+
+        <action name="nextmusic" class="action.PlayAction" method="next">
+            <result name="success">
+                /play.jsp
+            </result>
+        </action>
+
+        <action name="lastmusic" class="action.PlayAction" method="last">
+            <result name="success">
+                /play.jsp
+            </result>
+        </action>
+
+        <action name="mode" class="action.PlayAction" method="mode">
+
+        </action>
+
+        <action name="rename" class="action.RenameAction" method="execute">
+            <result name="success" type="chain">
+                <param name="actionName">list</param>
+                <param name="method">execute</param>
+            </result>
+        </action>
+        <action name="stream" class="action.StreamAction" method="execute">
+            <result name="success">
+
+            </result>
+        </action>
+        <action name="delete" class="action.DeleteAction" method="execute">
+            <result name="success" type="chain">
+                <param name="actionName">list</param>
+                <param name="method">execute</param>
+            </result>
+        </action>
+        <action name="list" class="action.ListAction" method="execute">
+            <result name="success">/index.jsp</result>
+        </action>
+        <action name="download" class="action.DownloadAction">
+            <result name="success" type="stream">
+                <param name="contentType">${type}</param>
+                <param name="inputName">targetFile</param>
+                <param name="contentDisposition">attachment;filename="${filename}"</param>
+                <param name="bufferSize">1024</param>
+            </result>
+        </action>
+        <action name="move" class="action.MoveAction" method="execute">
+            <result name="success" type="chain">
+                <param name="actionName">list</param>
+                <param name="method">execute</param>
+            </result>
+        </action>
+        <action name="open" class="action.ListAction" method="readRequest">
+            <result name="success" type="chain">
+                <param name="actionName">list</param>
+                <param name="method">execute</param>
+            </result>
+        </action>
+
+        <action name="connect" class="action.ConnectAction" method="execute">
+            <result name="success">
+                console.jsp
+            </result>
+        </action>
+
+        <action name="clear" class="action.ConnectAction" method="clear">
+            <result name="success">
+                console.jsp
+            </result>
+        </action>
+
+        <action name="light" class="action.WS2812action" method="light">
+            <result name="success">
+                console.jsp
+            </result>
+        </action>
+        <action name="number" class="action.WS2812action" method="number">
+            <result name="success">
+                console.jsp
+            </result>
+        </action>
+        <action name="python" class="action.WS2812action" method="python">
+            <result name="success">
+                console.jsp
+            </result>
+        </action>
+        <action name="color" class="action.WS2812action" method="color">
+            <result name="success">
+                console.jsp
+            </result>
+        </action>
+    </package>
+</struts>

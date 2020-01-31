@@ -1,0 +1,76 @@
+/*网盘内容的框*/
+.section1 {
+    font-family: Microsoft JhengHei, serif;
+    font-size: 18px;
+    border: 2px solid #dddddd;
+    border-radius: 5px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 10px;
+    margin-left: 50px;
+    margin-top: 15px;
+    padding-top: 1px;
+    width: 85%;
+    height: 83%;
+}
+
+/*  本来是注意的外框，后来弃用
+.section2{
+    border: 2px solid #dddddd;border-radius: 5px;width: 400px;height: 400px;margin-top: 15px;padding-left: 30px;padding-right: 30px;padding-bottom: 10px;margin-left: 50px;padding-top: 5px;margin-left: 750px;overflow-y: scroll;color: #111;
+}   */
+
+/*网盘内容里文件展开的框*/
+.section3 {
+    border: 2px solid #f3f3f3;
+    border-radius: 5px;
+    overflow: scroll;
+    height: 70%
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: #666;
+    text-align: center;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #ddd;
+}
+
+li a.active {
+    color: white;
+    background-color: #4CAF50;
+}
+
+.submit1 {
+    background-color: #fff; /* Green */
+    border: none;
+    color: lightskyblue;
+    padding: 3px 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.submit1:hover {
+    background-color: #777799;
+    color: deepskyblue;
+}

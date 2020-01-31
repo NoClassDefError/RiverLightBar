@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="UpperMachine:war">
+    <output-path>$PROJECT_DIR$/UpperMachine/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>UpperMachine</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="UpperMachine.war">
+      <element id="artifact" artifact-name="UpperMachine:war exploded" />
+    </root>
+  </artifact>
+</component>

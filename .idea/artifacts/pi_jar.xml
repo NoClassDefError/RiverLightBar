@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact name="pi:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/pi_jar</output-path>
+    <root id="root">
+      <element id="archive" name="pi.jar">
+        <element id="module-output" name="pi" />
+      </element>
+      <element id="library" level="project" name="commons" />
+      <element id="file-copy" path="$PROJECT_DIR$/pi/lib/jaudiotagger-2.0.3.jar" />
+      <element id="file-copy" path="$USER_HOME$/Desktop/code/jar构件/commons-io-2.6/commons-io-2.6.jar" />
+    </root>
+  </artifact>
+</component>

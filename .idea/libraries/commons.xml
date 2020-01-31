@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="commons">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Desktop/code/jar构件/commons/commons-beanutils-1.9.3/commons-beanutils-1.9.3.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/code/jar构件/commons/commons-collections4-4.3/commons-collections4-4.3.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/code/jar构件/commons/commons-lang3-3.9/commons-lang3-3.9.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/code/jar构件/commons/commons-logging-1.2/commons-logging-1.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

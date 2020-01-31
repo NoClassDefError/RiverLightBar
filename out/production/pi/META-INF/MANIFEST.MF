@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Main-Class: Pi
+Class-Path: commons-beanutils-1.9.3.jar commons-collections4-4.3.jar com
+ mons-lang3-3.9.jar commons-logging-1.2.jar jaudiotagger-2.0.3.jar commo
+ ns-io-2.6.jar
+
